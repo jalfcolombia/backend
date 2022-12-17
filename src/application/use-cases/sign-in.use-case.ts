@@ -1,15 +1,20 @@
-import { ISecurityService } from '../services/security.service';
+import { AccountDomainEntity } from '../../domain/entities';
+import { ISecurityDomainService } from '../../domain/services';
 import { IUseCaseInterface } from './interfaces/use-case.interface';
-import { IAccountDomainEntity } from '../../domain/entities/account.domain-entity';
+import { AccountValueObject } from '../../domain/value-objects/account.value-object';
 
-export class SignInUseCase<T extends ISecurityService<IAccountDomainEntity>>
-  implements IUseCaseInterface
+export class SignInUseCase<
+  T extends ISecurityDomainService<C>,
+  C extends AccountDomainEntity,
+  D extends AccountValueObject,
+> implements IUseCaseInterface
 {
   constructor(private readonly securityService: T) {}
 
-  execute(account: IAccountDomainEntity): any {
-    /* TODO document why this method 'execute' is empty */
-    console.log('SignInUseCase');
-    this.securityService.signIn(account);
+  execute(account: D): Promise<C> {
+    const newAccount = new AccountDomainEntity() as C;
+    newAccount.user = account.user;
+    newAccount.password = account.password;
+    return this.securityService.signIn(newAccount);
   }
 }

@@ -1,30 +1,31 @@
-import { Injectable } from '@nestjs/common';
-import { AccountEntity } from '../entities/account.entity';
-import { AccountRepository } from '../repositories/account.repository';
-import { ISecurityService } from '../../../../application/services/security.service';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { AccountEntity } from '../entities';
+import { AccountRepository } from '../repositories';
+import { ISecurityDomainService } from '../../../../domain/services';
 
 @Injectable()
-export class SecurityService implements ISecurityService<AccountEntity> {
+export class SecurityService implements ISecurityDomainService<AccountEntity> {
   constructor(private readonly accountRepository: AccountRepository) {}
 
-  signIn(account: AccountEntity): Promise<boolean> {
-    console.log('Signing in Service');
-    return Promise.resolve(true);
+  async signIn(account: AccountEntity): Promise<AccountEntity> {
+    return await this.accountRepository.create(account);
   }
 
-  signOut(id: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
+  signOut(id: string): Promise<AccountEntity> {
+    throw new InternalServerErrorException('Method not implemented.');
   }
 
-  signUp(account: AccountEntity): Promise<boolean> {
-    throw new Error('Method not implemented.');
+  signUp(account: AccountEntity): Promise<AccountEntity> {
+    throw new InternalServerErrorException('Method not implemented.');
   }
 
-  removeAccount(id: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
+  async removeAccount(id: string): Promise<AccountEntity> {
+    return await this.accountRepository.delete(id);
   }
 
-  resetPassword(id: string, newPassword: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
+  async resetPassword(id: string, newPassword: string): Promise<AccountEntity> {
+    const account = new AccountEntity();
+    account.password = newPassword;
+    return await this.accountRepository.update(id, account);
   }
 }

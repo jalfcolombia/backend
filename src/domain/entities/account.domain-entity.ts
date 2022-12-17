@@ -1,6 +1,6 @@
 import { BaseDomainEntity } from './base/base.domain-entity';
 
-export interface IAccountDomainEntity extends BaseDomainEntity {
+export class AccountDomainEntity extends BaseDomainEntity {
   user: string;
   password: string;
 }

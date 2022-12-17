@@ -1,14 +1,15 @@
-import { ISecurityService } from '../services/security.service';
+import { AccountDomainEntity } from '../../domain/entities';
+import { ISecurityDomainService } from '../../domain/services';
 import { IUseCaseInterface } from './interfaces/use-case.interface';
-import { IAccountDomainEntity } from '../../domain/entities/account.domain-entity';
 
 export class DeleteAccountUseCase<
-  T extends ISecurityService<IAccountDomainEntity>,
+  T extends ISecurityDomainService<C>,
+  C extends AccountDomainEntity,
 > implements IUseCaseInterface
 {
   constructor(private readonly securityService: T) {}
 
-  execute(): any {
-    /* TODO document why this method 'execute' is empty */
+  execute(id: string): Promise<C> {
+    return this.securityService.removeAccount(id);
   }
 }

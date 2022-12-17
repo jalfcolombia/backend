@@ -1,11 +1,20 @@
-import { PostgresModule } from './infrastructure/databases/postgres/postgres.module';
-import { MongoModule } from './infrastructure/databases/mongo/mongo.module';
+// Libraries
 import { Module } from '@nestjs/common';
-import { AppController } from './infrastructure/controllers/app/app.controller';
-import { SecurityController } from './infrastructure/controllers/security/security.controller';
+
+// DataBase
+import { DatabaseModule } from './infrastructure/databases/database.module';
+
+// Configs
+import { EnvironmentsConfig } from './infrastructure/configs/environments.config';
+
+// Controllers
+import {
+  AppController,
+  SecurityController,
+} from './infrastructure/controllers';
 
 @Module({
-  imports: [PostgresModule, MongoModule],
+  imports: [DatabaseModule, EnvironmentsConfig()],
   controllers: [AppController, SecurityController],
   providers: [],
 })

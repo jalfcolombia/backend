@@ -1,0 +1,10 @@
+{
+    "jest.autoRun": "off",
+    "cSpell.words": [
+        "dtos",
+        "pkaccount",
+        "pkcontact",
+        "pkemail",
+        "postgresql"
+    ],
+}

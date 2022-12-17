@@ -1,5 +1,5 @@
 import { IBaseRepository } from './base/base.repository';
-import { IAccountDomainEntity } from '../../domain/entities/account.domain-entity';
+import { AccountDomainEntity } from '../../domain/entities';
 
-export type IAccountRepository<T extends IAccountDomainEntity> =
+export type IAccountRepository<T extends AccountDomainEntity> =
   IBaseRepository<T>;

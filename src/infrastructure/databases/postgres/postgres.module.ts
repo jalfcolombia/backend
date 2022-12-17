@@ -1,18 +1,37 @@
+// Libraries
 import { Module } from '@nestjs/common';
-import { SecurityService } from './services/security.service';
-import { AccountRepository } from './repositories/account.repository';
-import { ContactRepository } from './repositories/contact.repository';
-import { EmailRepository } from './repositories/email.repository';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+// Configs
+import { PostgreSQLConfig } from './configs/postgresql.config';
+
+// Services
+import { SecurityService } from './services';
+
+// Entities
+import { AccountEntity, ContactEntity, EmailEntity } from './entities';
+
+// Repositories
+import {
+  AccountRepository,
+  ContactRepository,
+  EmailRepository,
+} from './repositories';
 
 @Module({
-  imports: [],
+  imports: [
+    TypeOrmModule.forRootAsync({ useClass: PostgreSQLConfig }),
+    TypeOrmModule.forFeature([AccountEntity, ContactEntity, EmailEntity]),
+  ],
   controllers: [],
   providers: [
+    PostgreSQLConfig,
+    TypeOrmModule,
     SecurityService,
     AccountRepository,
     ContactRepository,
     EmailRepository,
   ],
-  exports: [SecurityService],
+  exports: [PostgreSQLConfig, SecurityService],
 })
 export class PostgresModule {}

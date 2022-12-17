@@ -1,8 +1,7 @@
-import { IEmailDomainEntity } from '../../domain/entities/email.domain-entity';
-import { IContactDomainEntity } from '../../domain/entities/contact.domain-entity';
+import { ContactDomainEntity, EmailDomainEntity } from '../../domain/entities';
 
-export interface IContactService<
-  T extends IContactDomainEntity | IEmailDomainEntity,
+export interface IContactDomainService<
+  T extends ContactDomainEntity | EmailDomainEntity,
 > {
   findById(id: string): Promise<T | null>;
   findByName(name: string): Promise<T | null>;

@@ -1,4 +1,4 @@
 import { IBaseRepository } from './base/base.repository';
-import { IEmailDomainEntity } from '../../domain/entities/email.domain-entity';
+import { EmailDomainEntity } from '../../domain/entities';
 
-export type IEmailRepository<T extends IEmailDomainEntity> = IBaseRepository<T>;
+export type IEmailRepository<T extends EmailDomainEntity> = IBaseRepository<T>;

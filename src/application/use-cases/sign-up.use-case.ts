@@ -1,9 +1,10 @@
+import { AccountDomainEntity } from '../../domain/entities';
+import { ISecurityDomainService } from '../../domain/services';
 import { IUseCaseInterface } from './interfaces/use-case.interface';
-import { ISecurityService } from '../services/security.service';
-import { IAccountDomainEntity } from '../../domain/entities/account.domain-entity';
 
-export class SignUpUseCase<T extends ISecurityService<IAccountDomainEntity>>
-  implements IUseCaseInterface
+export class SignUpUseCase<
+  T extends ISecurityDomainService<AccountDomainEntity>,
+> implements IUseCaseInterface
 {
   constructor(private readonly securityService: T) {}
 

@@ -1,9 +1,9 @@
-import { ISecurityService } from '../services/security.service';
+import { AccountDomainEntity } from '../../domain/entities';
+import { ISecurityDomainService } from '../../domain/services';
 import { IUseCaseInterface } from './interfaces/use-case.interface';
-import { IAccountDomainEntity } from '../../domain/entities/account.domain-entity';
 
 export class ChangePasswordUseCase<
-  T extends ISecurityService<IAccountDomainEntity>,
+  T extends ISecurityDomainService<AccountDomainEntity>,
 > implements IUseCaseInterface
 {
   constructor(private readonly securityService: T) {}

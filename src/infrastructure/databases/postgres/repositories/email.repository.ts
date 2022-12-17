@@ -1,17 +1,44 @@
+import { IsNull, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { BadRequestException } from '@nestjs/common';
 import { EmailEntity } from '../entities/email.entity';
 import { IEmailRepository } from '../../../../application/repositories/email.repository';
 
 export class EmailRepository implements IEmailRepository<EmailEntity> {
-  findAll(): Promise<EmailEntity[]> {
-    throw new Error('Method not implemented.');
+  constructor(
+    @InjectRepository(EmailEntity)
+    private readonly clientRepository: Repository<EmailEntity>,
+  ) {}
+
+  async findAll(): Promise<EmailEntity[]> {
+    return await this.clientRepository.findBy({ deletedAt: IsNull() });
   }
-  create(entity: EmailEntity): Promise<EmailEntity> {
-    throw new Error('Method not implemented.');
+
+  async create(entity: EmailEntity): Promise<EmailEntity> {
+    return await this.clientRepository.save(entity);
   }
-  update(entity: EmailEntity): Promise<EmailEntity | null> {
-    throw new Error('Method not implemented.');
+
+  async update(id: string, entity: EmailEntity): Promise<EmailEntity> {
+    let entityToUpdate = await this.clientRepository.findOneBy({
+      id,
+      deletedAt: IsNull(),
+    });
+    if (entityToUpdate) {
+      entityToUpdate = { ...entityToUpdate, ...entity };
+      return await this.clientRepository.save(entityToUpdate);
+    }
+    throw new BadRequestException(`ID "${id}" does not exist in database`);
   }
-  delete(id: string): Promise<EmailEntity | null> {
-    throw new Error('Method not implemented.');
+
+  async delete(id: string): Promise<EmailEntity> {
+    const entityToDelete = await this.clientRepository.findOneBy({
+      id,
+      deletedAt: IsNull(),
+    });
+    if (entityToDelete) {
+      entityToDelete.deletedAt = new Date();
+      return await this.clientRepository.save(entityToDelete);
+    }
+    throw new BadRequestException(`ID "${id}" does not exist in database`);
   }
 }

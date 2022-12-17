@@ -1,5 +1,5 @@
 import { IBaseRepository } from './base/base.repository';
-import { IContactDomainEntity } from '../../domain/entities/contact.domain-entity';
+import { ContactDomainEntity } from '../../domain/entities';
 
-export type IContactRepository<T extends IContactDomainEntity> =
+export type IContactRepository<T extends ContactDomainEntity> =
   IBaseRepository<T>;
