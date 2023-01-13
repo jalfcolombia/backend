@@ -1,7 +1,7 @@
 export abstract class BaseDomainEntity {
   id: string;
   status: boolean;
-  createdAt: Date;
-  updatedAt: Date | null;
-  deletedAt: Date | null;
+  createdAt: Date | number;
+  updatedAt: Date | number | null;
+  deletedAt: Date | number | null;
 }

@@ -10,13 +10,13 @@ export abstract class BaseValueObject {
   status = true;
 
   @IsDate({ message: 'The data is not a valid date' })
-  createdAt: Date;
+  createdAt: Date | number;
 
   @IsOptional()
   @IsDate({ message: 'The data is not a valid date' })
-  updatedAt: Date | null;
+  updatedAt: Date | number | null;
 
   @IsOptional()
   @IsDate({ message: 'The data is not a valid date' })
-  deletedAt: Date | null;
+  deletedAt: Date | number | null;
 }
