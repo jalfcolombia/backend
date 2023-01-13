@@ -6,9 +6,8 @@ import {
   ParseUUIDPipe,
   Post,
 } from '@nestjs/common';
-import { SignInDTO } from '../../common/dtos';
-import { AccountEntity } from '../../databases/postgres/entities';
-import { SecurityService } from '../../databases/postgres/services';
+import { SignInDTO } from '../../common/dto';
+import { AccountEntity, SecurityService } from '../../databases/postgres';
 import {
   SignInUseCase,
   DeleteAccountUseCase,
@@ -16,30 +15,24 @@ import {
 
 @Controller('security')
 export class SecurityController {
-  private signInUseCase: SignInUseCase<
-    SecurityService,
-    AccountEntity,
-    SignInDTO
-  >;
-
-  private deleteAccountUseCase: DeleteAccountUseCase<
-    SecurityService,
-    AccountEntity
-  >;
-
   constructor(private readonly securityService: SecurityService) {}
 
   @Post('account')
   signIn(@Body() signedIn: SignInDTO): Promise<AccountEntity> {
-    this.signInUseCase = new SignInUseCase(this.securityService);
-    return this.signInUseCase.execute(signedIn);
+    const signInUseCase = new SignInUseCase<SecurityService, AccountEntity>(
+      this.securityService,
+    );
+    return signInUseCase.execute(signedIn);
   }
 
   @Delete('account/:id')
   deleteAccount(
     @Param('id', ParseUUIDPipe) id: string,
   ): Promise<AccountEntity> {
-    this.deleteAccountUseCase = new DeleteAccountUseCase(this.securityService);
-    return this.deleteAccountUseCase.execute(id);
+    const deleteAccountUseCase = new DeleteAccountUseCase<
+      SecurityService,
+      AccountEntity
+    >(this.securityService);
+    return deleteAccountUseCase.execute(id);
   }
 }

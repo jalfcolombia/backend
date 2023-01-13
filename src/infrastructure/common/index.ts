@@ -1,4 +1,4 @@
-export * from './dtos';
+export * from './dto';
 export * from './exception-filters';
 export * from './guards';
 export * from './interceptors';

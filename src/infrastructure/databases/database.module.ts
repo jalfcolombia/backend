@@ -2,7 +2,7 @@
 import { Module } from '@nestjs/common';
 
 // Modules
-import { PostgresModule } from './postgres/postgres.module';
+import { PostgresModule } from './postgres';
 
 @Module({
   imports: [PostgresModule],

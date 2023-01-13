@@ -2,7 +2,7 @@ import { IsNull, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { AccountEntity } from '../entities';
-import { IBaseRepository } from '../../../common/interfaces/repositories';
+import { IBaseRepository } from '../../../common/interfaces';
 
 @Injectable()
 export class AccountRepository implements IBaseRepository<AccountEntity> {

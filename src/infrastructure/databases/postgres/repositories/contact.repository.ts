@@ -2,7 +2,7 @@ import { IsNull, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BadRequestException } from '@nestjs/common';
 import { ContactEntity } from './../entities';
-import { IBaseRepository } from '../../../common/interfaces/repositories';
+import { IBaseRepository } from '../../../common/interfaces';
 
 export class ContactRepository implements IBaseRepository<ContactEntity> {
   constructor(

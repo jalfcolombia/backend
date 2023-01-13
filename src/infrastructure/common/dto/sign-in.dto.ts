@@ -1,11 +1,7 @@
 import { IsNotEmpty, IsString, Matches, MaxLength } from 'class-validator';
-import { AccountDomainEntity } from '../entities';
-import { BaseValueObject } from './base/base.value-object';
+import { AccountDomainEntity } from '../../../domain/entities';
 
-export abstract class AccountValueObject
-  extends BaseValueObject
-  implements AccountDomainEntity
-{
+export class SignInDTO extends AccountDomainEntity {
   @IsNotEmpty({ message: 'The user field is mandatory' })
   @IsString({ message: 'The username is a string field' })
   @MaxLength(200, {
