@@ -1,4 +1,4 @@
-import { AccountDomainEntity } from '../../domain/entities/account.domain-entity';
+import { AccountDomainEntity } from '../entities/account.domain-entity';
 
 export interface ISecurityDomainService<T extends AccountDomainEntity> {
   signIn(account: T): Promise<T>;

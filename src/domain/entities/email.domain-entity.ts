@@ -1,6 +1,6 @@
-import { BaseDomainEntity } from './base/base.domain-entity';
+import { DomainEntityBase } from './base/domain-entity.base';
 
-export class EmailDomainEntity extends BaseDomainEntity {
+export class EmailDomainEntity extends DomainEntityBase {
   contactId: string;
   mail: string;
 }

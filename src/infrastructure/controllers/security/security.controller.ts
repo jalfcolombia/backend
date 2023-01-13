@@ -7,7 +7,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { SignInDTO } from '../../common/dto';
-import { AccountEntity, SecurityService } from '../../databases/postgres';
+import { AccountEntity, SecurityService } from '../../databases';
 import {
   SignInUseCase,
   DeleteAccountUseCase,

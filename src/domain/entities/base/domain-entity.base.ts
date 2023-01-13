@@ -1,4 +1,4 @@
-export abstract class BaseDomainEntity {
+export abstract class DomainEntityBase {
   id: string;
   status: boolean;
   createdAt: Date | number;
