@@ -7,11 +7,11 @@ import {
   Post,
 } from '@nestjs/common';
 import { SignInDTO } from '../../common/dto';
-import { AccountEntity, SecurityService } from '../../databases';
 import {
   SignInUseCase,
   DeleteAccountUseCase,
 } from '../../../application/use-cases';
+import { AccountEntity, SecurityService } from '../../databases/postgres';
 
 @Controller('security')
 export class SecurityController {
