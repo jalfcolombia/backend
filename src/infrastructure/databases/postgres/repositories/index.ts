@@ -1,5 +1,3 @@
-import { AccountRepository } from './account.repository';
-import { ContactRepository } from './contact.repository';
-import { EmailRepository } from './email.repository';
-
-export { AccountRepository, ContactRepository, EmailRepository };
+export * from './account.repository';
+export * from './contact.repository';
+export * from './email.repository';

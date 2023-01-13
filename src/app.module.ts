@@ -1,17 +1,13 @@
 // Libraries
 import { Module } from '@nestjs/common';
 
-// DataBase
-import { DatabaseModule } from './infrastructure/databases/database.module';
-
-// Configs
-import { EnvironmentsConfig } from './infrastructure/configs/environments.config';
-
-// Controllers
+// Infrastructure
 import {
   AppController,
+  DatabaseModule,
+  EnvironmentsConfig,
   SecurityController,
-} from './infrastructure/controllers';
+} from './infrastructure';
 
 @Module({
   imports: [DatabaseModule, EnvironmentsConfig()],

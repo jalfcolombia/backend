@@ -1,5 +1,4 @@
-import { AccountDomainEntity } from '../../domain/entities';
-import { ISecurityDomainService } from '../../domain/services';
+import { AccountDomainEntity, ISecurityDomainService } from '../../domain';
 import { IUseCaseInterface } from './interfaces/use-case.interface';
 
 export class SignUpUseCase<

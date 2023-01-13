@@ -1,7 +1,9 @@
-import { AccountDomainEntity } from '../../domain/entities';
-import { ISecurityDomainService } from '../../domain/services';
+import {
+  AccountDomainEntity,
+  AccountValueObject,
+  ISecurityDomainService,
+} from '../../domain';
 import { IUseCaseInterface } from './interfaces/use-case.interface';
-import { AccountValueObject } from '../../domain/value-objects/account.value-object';
 
 export class SignInUseCase<
   T extends ISecurityDomainService<C>,

@@ -1,10 +1,10 @@
 import { IsNull, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BadRequestException } from '@nestjs/common';
-import { EmailEntity } from '../entities/email.entity';
-import { IEmailRepository } from '../../../../application/repositories/email.repository';
+import { EmailEntity } from '../entities';
+import { IBaseRepository } from '../../../common/interfaces/repositories';
 
-export class EmailRepository implements IEmailRepository<EmailEntity> {
+export class EmailRepository implements IBaseRepository<EmailEntity> {
   constructor(
     @InjectRepository(EmailEntity)
     private readonly clientRepository: Repository<EmailEntity>,

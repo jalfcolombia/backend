@@ -1,3 +1,1 @@
-import { SecurityService } from './security.service';
-
-export { SecurityService };
+export * from './security.service';

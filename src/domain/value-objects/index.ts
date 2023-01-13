@@ -1,5 +1,4 @@
-import { AccountValueObject } from './account.value-object';
-import { ContactValueObject } from './contact.value-object';
-import { EmailValueObject } from './email.value-object';
-
-export { AccountValueObject, ContactValueObject, EmailValueObject };
+export * from './account.value-object';
+export * from './base';
+export * from './contact.value-object';
+export * from './email.value-object';

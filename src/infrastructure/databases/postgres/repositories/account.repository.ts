@@ -1,11 +1,11 @@
 import { IsNull, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { AccountEntity } from '../entities/account.entity';
-import { IAccountRepository } from '../../../../application/repositories/account.repository';
+import { AccountEntity } from '../entities';
+import { IBaseRepository } from '../../../common/interfaces/repositories';
 
 @Injectable()
-export class AccountRepository implements IAccountRepository<AccountEntity> {
+export class AccountRepository implements IBaseRepository<AccountEntity> {
   constructor(
     @InjectRepository(AccountEntity)
     private readonly clientRepository: Repository<AccountEntity>,

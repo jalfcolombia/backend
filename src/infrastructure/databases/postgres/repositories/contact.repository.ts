@@ -1,10 +1,10 @@
 import { IsNull, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BadRequestException } from '@nestjs/common';
-import { ContactEntity } from './../entities/contact.entity';
-import { IContactRepository } from '../../../../application/repositories/contact.repository';
+import { ContactEntity } from './../entities';
+import { IBaseRepository } from '../../../common/interfaces/repositories';
 
-export class ContactRepository implements IContactRepository<ContactEntity> {
+export class ContactRepository implements IBaseRepository<ContactEntity> {
   constructor(
     @InjectRepository(ContactEntity)
     private readonly clientRepository: Repository<ContactEntity>,

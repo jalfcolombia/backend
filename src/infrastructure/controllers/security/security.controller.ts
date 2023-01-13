@@ -6,10 +6,13 @@ import {
   ParseUUIDPipe,
   Post,
 } from '@nestjs/common';
-import { SignInDTO, SecurityService } from '../../databases';
+import { SignInDTO } from '../../common/dtos';
 import { AccountEntity } from '../../databases/postgres/entities';
-import { SignInUseCase } from '../../../application/use-cases/sign-in.use-case';
-import { DeleteAccountUseCase } from '../../../application/use-cases/delete-account.use-case';
+import { SecurityService } from '../../databases/postgres/services';
+import {
+  SignInUseCase,
+  DeleteAccountUseCase,
+} from '../../../application/use-cases';
 
 @Controller('security')
 export class SecurityController {
