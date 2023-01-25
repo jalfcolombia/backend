@@ -32,13 +32,13 @@ export class AccountEntity extends AccountDomainEntity {
     name: 'account_updated_at',
     nullable: true,
   })
-  updatedAt: Date | null;
+  updatedAt?: Date | number | null;
 
   @Column('timestamp with time zone', {
     name: 'account_deleted_at',
     nullable: true,
   })
-  deletedAt: Date | null;
+  deletedAt?: Date | number | null;
 
   @OneToMany(() => ContactEntity, (contact) => contact.account)
   contacts: ContactEntity[];

@@ -38,13 +38,13 @@ export class EmailEntity extends EmailDomainEntity {
     name: 'email_updated_at',
     nullable: true,
   })
-  updatedAt: Date | null;
+  updatedAt?: Date | number | null;
 
   @Column('timestamp with time zone', {
     name: 'email_deleted_at',
     nullable: true,
   })
-  deletedAt: Date | null;
+  deletedAt?: Date | number | null;
 
   @OneToOne(() => ContactEntity, (contact) => contact.emails, {
     onDelete: 'RESTRICT',

@@ -51,13 +51,13 @@ export class ContactEntity extends ContactDomainEntity {
     name: 'contact_updated_at',
     nullable: true,
   })
-  updatedAt: Date;
+  updatedAt?: Date | number | null;
 
   @Column('timestamp with time zone', {
     name: 'contact_updated_at',
     nullable: true,
   })
-  deletedAt: Date;
+  deletedAt?: Date | number | null;
 
   @ManyToOne(() => AccountEntity, (account) => account.contacts, {
     onDelete: 'RESTRICT',
