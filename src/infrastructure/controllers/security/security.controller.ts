@@ -6,7 +6,7 @@ import {
   ParseUUIDPipe,
   Post,
 } from '@nestjs/common';
-import { SignInDTO } from '../../common/dto';
+import { SignInDTO } from '../../common/dtos';
 import {
   SignInUseCase,
   DeleteAccountUseCase,
